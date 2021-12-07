@@ -1,0 +1,70 @@
+// Sorties LEDs
+
+const int Level0LED = 2;
+const int Level1LED = 3;
+const int Level2LED = 4;
+const int Level3LED = 5;
+
+// Valeurs analogique
+
+float Val0 = 0;
+float Val1 = 0;
+float Val2 = 0;
+float Val3 = 0;
+
+
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(Level0LED, OUTPUT);
+  pinMode(Level1LED, OUTPUT);
+  pinMode(Level2LED, OUTPUT);
+  pinMode(Level3LED, OUTPUT);
+
+}
+
+void loop() {
+
+  Val0 = analogRead(Level0Pin);
+  Serial.print (Val0);
+  Serial.print("\t");
+  if (Val0 > 400){
+    digitalWrite(Level0LED, LOW);
+  }
+  else{ 
+    digitalWrite(Level0LED, HIGH);
+    
+  }
+
+  Val1 = analogRead(Level1Pin);
+  Serial.print (Val1);
+  Serial.print("\t");
+  if (Val1 > 400){
+    digitalWrite(Level1LED, LOW);
+  }
+  else{ 
+    digitalWrite(Level1LED, HIGH);
+  }
+  
+  Val2 = analogRead(Level2Pin);
+  Serial.print (Val2);
+  Serial.print("\t");
+  if (Val2 > 400){
+    digitalWrite(Level2LED, LOW);
+  }
+  else{ 
+    digitalWrite(Level2LED, HIGH);
+  }
+
+   Val3 = analogRead(Level3Pin);
+  Serial.print (Val3);
+  Serial.println("\t");
+  if (Val3 > 400){
+    digitalWrite(Level3LED, LOW);
+  }
+  else{ 
+    digitalWrite(Level3LED, HIGH);
+  }
+
+}
