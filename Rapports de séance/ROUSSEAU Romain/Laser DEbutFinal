@@ -1,0 +1,44 @@
+// Alarme
+
+#define NOTE_A4  440   //grave
+#define NOTE_C6  1047 //aigu 
+const int buzzer = 7;
+
+//Sorties Laser
+
+const int Laser = 2;
+const int Recepteur = A3;
+
+void setup() {
+  pinMode(Laser, OUTPUT);
+  //Initialisation de la communication série 
+  //    avec l'ordinateur.
+  Serial.begin(9600);
+  pinMode (buzzer, INPUT);
+
+}  
+
+void loop() {
+  digitalWrite(Laser, HIGH);
+  
+  //Création d'une variable booléenne
+  //   pour y stocker l'état du bouton
+  //   qui est lu sur la broche 3.
+  int valPhot=analogRead(A3);
+  
+  //Envoi de la valeur de la variable etatBouton
+  //   sur le terminal de l'ordinateur.
+  //Serial.println(valPhot);
+  if (analogRead(A3) > 900){
+    int val=1;
+    Serial.println(val);
+  }
+  else{
+    int val=0;    
+      tone (buzzer, NOTE_C6, 200);
+      tone (buzzer, NOTE_A4, 500);
+      Serial.println(val);
+  }
+  
+
+}
